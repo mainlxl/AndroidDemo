@@ -1,0 +1,67 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion COMPILE_SDK_VERSION as int
+    defaultConfig {
+        minSdkVersion MIN_SDK_VERSION as int
+    }
+}
+
+
+apply plugin: 'maven-publish'
+
+def outputJarName = getLibraryName();
+//打包源码
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.sourceFiles
+}
+publishing {
+    repositories {
+        maven {
+            url '../maven/'
+        }
+    }
+
+    publications {
+        mavenLocal(MavenPublication) {
+            def targetFile = file("build/outputs/aar/${outputJarName}-release.aar")
+            if (targetFile.exists()) {
+                groupId GROUP
+                artifactId outputJarName
+                version "1.0"
+                artifact source: targetFile, extension: "aar"
+//                //配置上传源码
+                artifact sourceJar {
+                    classifier "sources"
+                }
+            } else {
+                println "error - ${outputJarName}不存在"
+            }
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+                configurations.implementation.allDependencies.each { dependency ->
+                    handleCompileDependencies(dependency, dependenciesNode)
+                }
+                configurations.compile.allDependencies.each { dependency ->
+                    handleCompileDependencies(dependency, dependenciesNode)
+                }
+                configurations.api.allDependencies.each { dependency ->
+                    handleCompileDependencies(dependency, dependenciesNode)
+                }
+            }
+        }
+    }
+}
+
+
+def handleCompileDependencies(dependencies, dependencyNodes) {
+    if (null != dependencies.group) {
+        def dependencyNode = dependencyNodes.appendNode('dependency')
+        def groupId = dependencies.group
+        def artifactId = dependencies.name
+        def version = dependencies.version
+        dependencyNode.appendNode('groupId', groupId)
+        dependencyNode.appendNode('artifactId', artifactId)
+        dependencyNode.appendNode('version', version)
+    }
+}

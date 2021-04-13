@@ -1,0 +1,39 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.3.30'
+    ext.kotlin_version = kotlin_version
+    repositories {
+        google()
+        jcenter()
+        maven { url new File(rootProject.projectDir, "maven") }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.16'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.9'
+        classpath 'com.mainli:so7z:1.0.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "../maven/" }
+        maven { url "../maven/flutter/" }
+        maven { url "https://raw.githubusercontent.com/Android-Mainli/Maven/master" }
+        maven { url "http://download.flutter.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

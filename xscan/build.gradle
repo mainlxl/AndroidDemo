@@ -1,0 +1,18 @@
+apply from: '../local_aars.gradle'
+
+android {
+}
+//https://github.com/Simon-Leeeeeeeee/XCodeScanner#%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F
+dependencies {
+    implementation "com.android.support:appcompat-v7:$LIB_SUPPORT_VISION"
+//    implementation "cn.bingoogolapple:bga-qrcode-core:1.3.6"
+    implementation 'com.google.zxing:core:3.3.3'
+    compileOnly 'com.seekting:demolib:1.2.11'
+}
+repositories {
+    mavenCentral()
+}
+
+def getLibraryName() {
+    'xscan'
+}

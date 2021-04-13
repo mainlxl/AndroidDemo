@@ -1,0 +1,9 @@
+include ':app', ':rxlib', ':annotations', ':processor'
+if (!Boolean.parseBoolean(USER_AAR)) {
+    include ':mmkv', ':xscan', 'relinker7z', ':So7z', ':log'
+}
+if (!Boolean.parseBoolean(USER_FLUTTER_AAR)) {
+    setBinding(new Binding([gradle: this]))
+    evaluate(new File(settingsDir.parentFile, 'demo_flutter/.android/include_flutter.groovy'
+    ))
+}

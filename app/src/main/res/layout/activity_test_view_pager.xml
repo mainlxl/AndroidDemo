@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mainli.view.MyViewPager
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/black_a10"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_box_ad_button_text_color"
+        android:gravity="center"
+        android:text="0"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/tx_e_a60"
+            android:gravity="center"
+            android:text="1"/>
+
+        <com.mainli.view.MultiPointTouch.MultiPointRelayView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="200dp"
+            android:background="@color/black_a10"/>
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/tx_app_mgr"
+        android:gravity="center"
+        android:text="2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/tx_app_box"
+        android:gravity="center"
+        android:text="3"/>
+</com.mainli.view.MyViewPager>

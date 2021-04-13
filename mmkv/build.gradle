@@ -1,0 +1,30 @@
+apply from: '../local_aars.gradle'
+
+android {
+
+    defaultConfig {
+        versionCode 1
+        versionName '1.0.17'
+        externalNativeBuild {
+            cmake {
+                arguments "-DANDROID_STL=c++_shared"
+                cppFlags "-std=c++1z -fno-exceptions"
+                abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'mips', 'mips64', 'x86', 'x86_64'
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
+
+dependencies {
+    implementation "com.android.support:support-annotations:$LIB_SUPPORT_VISION"
+}
+
+def getLibraryName() {
+    'mmkv'
+}

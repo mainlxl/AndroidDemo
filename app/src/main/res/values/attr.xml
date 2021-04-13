@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NumberCaptcha">
+        <attr name="captchaSize" format="integer" />
+        <attr name="gapWidth" format="dimension" />
+        <attr name="cursorLineSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundFrameLayout">
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CountDownTextView">
+        <attr name="textPadding" format="dimension" />
+        <attr name="halfGap" format="dimension" />
+    </declare-styleable>
+</resources>

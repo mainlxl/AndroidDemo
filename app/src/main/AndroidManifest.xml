@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mainli">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.seekting.demo_lib.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TestActivity"
+            android:label="测试" />
+        <activity
+            android:name=".activity.DiceActivity"
+            android:label="骰子DrawableDice" />
+        <activity
+            android:name=".activity.TestPostCallMethodActivity"
+            android:label="onPostCreate和onPostResume生命周期方法测试" />
+        <activity
+            android:name=".activity.AnimationsContainerTestActivity"
+            android:label="帧动画优化内存" />
+        <activity
+            android:name=".activity.TestAPTActivity"
+            android:label="自定义编译时注解" />
+        <activity
+            android:name=".activity.RichMediaActivity"
+            android:label="富媒体(文本中插入链接)"
+            android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity
+            android:name=".activity.NumberCaptchaActivity"
+            android:label="验证码控件"
+            android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity
+            android:name=".activity.EmojiActivity"
+            android:label="Emoji表情"
+            android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity
+            android:name=".activity.CoordinatorLayoutActivity"
+            android:label="CoordinatorLayout自定义Behavior" />
+        <activity
+            android:name=".activity.GlideActivity"
+            android:label="Glide加载大图" />
+        <activity
+            android:name=".activity.gl.HelloPointsActivity"
+            android:label="Hello OpenGL" />
+        <activity
+            android:name=".activity.RoundActivity"
+            android:label="子View统一圆角处理FramLayout" />
+        <activity
+            android:name=".activity.TestViewActivity"
+            android:label="测试自定义View" />
+        <activity
+            android:name=".activity.TestLayoutChangeListenerActivity"
+            android:label="测试LayoutChangeListener,实现LinearLayout右上角加View" />
+        <activity
+            android:name=".activity.TestViewPagerActivity"
+            android:label="自定义ViewPager" />
+        <activity
+            android:name=".activity.TestFlutterActivity"
+            android:label="测试flutter" />
+        <activity
+            android:name=".activity.FloatingActivity"
+            android:label="悬浮窗" />
+
+        <service android:name=".service.FloatingService" />
+    </application>
+
+</manifest>
