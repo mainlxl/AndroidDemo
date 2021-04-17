@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/white"></item>
+    <item android:top="60dp">
+        <bitmap
+            android:width="20dp"
+            android:height="20dp"
+            android:gravity="top"
+            android:src="@drawable/turntable_entrance_turntable" />
+    </item>
+</layer-list>

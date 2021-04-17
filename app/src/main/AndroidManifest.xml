@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-    <application
+    <application xmlns:tools="http://schemas.android.com/tools"
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -16,13 +16,20 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.seekting.demo_lib.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+<!--        <activity-->
+<!--            android:name=".SplashActivity"-->
+<!--            android:theme="@style/AppTheme.splash">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+<!--        <activity-->
+<!--            android:name="com.seekting.demo_lib.MainActivity"-->
+<!--            tools:node="replace" />-->
         <activity
             android:name=".TestActivity"
             android:label="测试" />

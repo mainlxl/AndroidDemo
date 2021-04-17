@@ -2,6 +2,7 @@ package com.mainli;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.Debug;
 
 import com.getkeepsafe.relinker.ReLinker;
 import com.mainli.log.CrashHandler;
@@ -26,6 +27,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Debug.startMethodTracing("MyApplication.onCreate");
         DemoLib.init(this);
         MyApplication.mContext = getApplicationContext();
         L.init(new File(getExternalCacheDir(), "logs"), 4028, false, new LogBuffer.LibLoader() {
@@ -43,6 +45,7 @@ public class MyApplication extends Application {
                 ReLinker.recursively().loadLibrary(MyApplication.this, libName);
             }
         });
+        Debug.stopMethodTracing();
     }
 
     public static Context getAppContext() {
