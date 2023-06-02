@@ -12,15 +12,27 @@ import com.mainli.R
  */
 class DiceDrawable(val context: Context) : AnimationDrawable() {
     private val DURATION = 100
-    private val drawables = intArrayOf(R.mipmap.dice_anim_1, R.mipmap.dice_anim_2, R.mipmap.dice_anim_3, R.mipmap.dice_anim_4)
-    private val resultDrawables = intArrayOf(R.mipmap.dice_1, R.mipmap.dice_2, R.mipmap.dice_3, R.mipmap.dice_4, R.mipmap.dice_5, R.mipmap.dice_6)
+    private val drawables = intArrayOf(
+        R.mipmap.dice_anim_1,
+        R.mipmap.dice_anim_2,
+        R.mipmap.dice_anim_3,
+        R.mipmap.dice_anim_4
+    )
+    private val resultDrawables = intArrayOf(
+        R.mipmap.dice_1,
+        R.mipmap.dice_2,
+        R.mipmap.dice_3,
+        R.mipmap.dice_4,
+        R.mipmap.dice_5,
+        R.mipmap.dice_6
+    )
     private val END_INDEX = drawables.size - 1
     private var repeteCount = 0
     var finishCount = 3
     private var resultDrawable: Drawable? = null
     private var resultindex = -1
     private var isSwitchTarget = true
-    var diceAnimationListener:DiceAnimationListener?=null
+    var diceAnimationListener: DiceAnimationListener? = null
     var oneShotImageView: ImageView? = null
         set(value) {
             value?.setImageDrawable(this)
@@ -29,7 +41,7 @@ class DiceDrawable(val context: Context) : AnimationDrawable() {
 
     init {
         for (i in drawables.indices) {
-            addFrame(ContextCompat.getDrawable(context, drawables[i]), DURATION)
+            addFrame(ContextCompat.getDrawable(context, drawables[i])!!, DURATION)
         }
     }
 
@@ -46,7 +58,7 @@ class DiceDrawable(val context: Context) : AnimationDrawable() {
         resultindex = (resultNumber - 1) % resultDrawables.size
         resultDrawable = ContextCompat.getDrawable(context, resultDrawables[resultindex])
         if (isRunning) {
-            unscheduleSelf(null)//关闭运行状态
+            unscheduleSelf({ })//关闭运行状态
         }
         super.start()
     }
@@ -75,6 +87,7 @@ class DiceDrawable(val context: Context) : AnimationDrawable() {
 //        }
 //    }
 }
-interface DiceAnimationListener{
+
+interface DiceAnimationListener {
     fun onFinishDiceAnimation()
 }

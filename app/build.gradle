@@ -2,15 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'AndResGuard'
 apply plugin: 'com.google.protobuf'
-apply plugin: 'com.mainli.So7z'
-
-so7z {
-    //debug包中不切换so到assets
-//    excludeBuildTypes = ['debug']
-//    sos = ['libmmkv.so', 'libc++_shared.so', 'libblur-lib.so', 'liblog4a-lib.so']
-}
 
 android {
 
@@ -37,7 +29,8 @@ android {
 //            }
 //        }
         ndk {
-            abiFilters 'armeabi-v7a', 'arm64-v8a'
+            //noinspection ChromeOsAbiSupport
+            abiFilters 'arm64-v8a', 'armeabi-v7a'
         }
 
         defaultConfig {
@@ -69,10 +62,9 @@ android {
     //自定义apk名称含版本号信息
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "Demo2018-VC(${variant.versionCode})-VN(${variant.versionName})-${getDate()}.apk"
+            outputFileName = "Demo2018-VC(${variant.versionCode})-VN(${variant.versionName})-${new Date().format('(yyyy-MM-dd HH.mm.ss)')}.apk"
         }
     }
-
     sourceSets {
         main {
             // 定义proto文件目录
@@ -82,24 +74,19 @@ android {
             }
         }
     }
-
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
 }
 
-String getDate() {
-    return new Date().format('(yyyy-MM-dd HH.mm.ss)')
-}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.31'
-    implementation "androidx.appcompat:appcompat:1.1.0-beta01"
-    implementation "androidx.recyclerview:recyclerview:1.1.0-alpha06"
-    implementation "com.google.android.material:material:1.1.0-alpha07"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10'
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "androidx.recyclerview:recyclerview:1.3.0"
+    implementation "com.google.android.material:material:1.9.0"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     //----------运行时注解--------------------------------------------------------------------------------------------------------
     implementation project(':annotations')
     kapt project(':processor')
@@ -142,11 +129,11 @@ dependencies {
 }
 protobuf {
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.0.0'
+        artifact = 'com.google.protobuf:protoc:3.23.0'
     }
     plugins {
         javalite {
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0:osx-x86_64'
         }
     }
     generateProtoTasks {
@@ -159,48 +146,4 @@ protobuf {
             }
         }
     }
-}
-
-
-//详细文档 https://github.com/shwenzhang/AndResGuard/blob/master/doc/how_to_work.zh-cn.md
-andResGuard {
-    //可以在mappingFile指向的文件添加保持资源命名的一致性
-    mappingFile = null
-    use7zip = false
-    useSign = true
-    // 打开这个开关，会keep住所有资源的原始路径，只混淆资源的名字
-    keepRoot = false
-    /**
-     * 所有使用getIdentifier(通过资源名称访问资源)访问的资源都需要加入白名单。
-     * 第三方库需要加入白名单列表:https://github.com/shwenzhang/AndResGuard/blob/master/doc/white_list.md
-     */
-    whiteList = [
-
-    ]
-    compressFilePattern = [
-            "*.png",
-            "*.jpg",
-            "*.jpeg",
-            "*.gif",
-    ]
-    /**
-     * 在window上面使用7z生成的安装包会较大,出包请使用Linux(Mac亦可)
-     * 配置7Zip
-     * 在设置sevenzip时, 你只需设置artifact或path. 支持同时设置,总以path的值为优先.
-     */
-    sevenzip {
-        artifact = 'com.tencent.mm:SevenZip:1.2.15'
-        //path = "/usr/local/bin/7za"
-    }
-
-    /**
-     * 可选： 如果没有配置finalApkBackupPath，最终结果会覆盖assemble[BuildType | Flavor]的输出APK
-     **/
-//     finalApkBackupPath = "${project.rootDir}/final.apk"
-
-    /**
-     * 可选: 指定v1签名时生成jar文件的摘要算法
-     * 默认值为“SHA-1”
-     **/
-    // digestalg = "SHA-256"
 }
