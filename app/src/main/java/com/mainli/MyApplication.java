@@ -15,21 +15,18 @@ import com.tencent.mmkv.MMKV;
 import java.io.File;
 
 
-
 /**
  * Application基类
- * Created by shixiaoming on 16/12/6.
  */
-
 public class MyApplication extends Application {
-    private static Context mContext;
+    private static Application sContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
         Debug.startMethodTracing("MyApplication.onCreate");
         DemoLib.init(this);
-        MyApplication.mContext = getApplicationContext();
+        MyApplication.sContext = this;
         L.init(new File(getExternalCacheDir(), "logs"), 4028, false, new LogBuffer.LibLoader() {
             @Override
             public void loadLibrary(String libName) {
@@ -49,6 +46,6 @@ public class MyApplication extends Application {
     }
 
     public static Context getAppContext() {
-        return MyApplication.mContext;
+        return MyApplication.sContext;
     }
 }

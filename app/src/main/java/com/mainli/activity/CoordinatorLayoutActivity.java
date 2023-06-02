@@ -1,10 +1,12 @@
 package com.mainli.activity;
 
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.widget.ImageView;
 
 import com.mainli.R;
@@ -27,6 +29,8 @@ public class CoordinatorLayoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coordinator);
         mRecyclerView = findViewById(R.id.recycler_view);
+        //存在有Behavior时不生效问题
+//        SpringEdgeEffect.applySpringEdgeEffect(mRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setAdapter(new RecyclerAdapter<String>(Arrays.asList("aaa", "bb", "ss", "asa", "jhhh", "aaa", "bb", "ss", "asa", "jhhh", "aaa", "bb", "ss", "asa", "jhhh", "aaa", "bb", "ss", "asa", "jhhh", "aaa", "bb", "ss", "asa", "jhhh", "aaa", "bb", "ss", "asa", "jhhh", "aaa", "bb", "ss", "asa", "jhhh", "aaa", "bb", "ss", "asa", "jhhh", "aaa", "bb", "ss", "asa", "jhhh", "aaa", "bb", "ss", "asa", "jhhh")//
                 , android.R.layout.activity_list_item) {

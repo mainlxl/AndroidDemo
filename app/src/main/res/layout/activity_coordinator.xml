@@ -14,13 +14,13 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#f00"
-        app:layout_behavior="com.mainli.behavior.HideTopBehavior"/>
+        app:layout_behavior="com.mainli.behavior.HideTopBehavior" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginBottom="10dp"
         android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
         android:background="#f00"
         app:layout_behavior="com.mainli.behavior.HideBottomBehavior"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
