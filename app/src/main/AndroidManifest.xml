@@ -17,19 +17,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-<!--        <activity-->
-<!--            android:name=".SplashActivity"-->
-<!--            android:theme="@style/AppTheme.splash">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+        <!--        <activity-->
+        <!--            android:name=".SplashActivity"-->
+        <!--            android:theme="@style/AppTheme.splash">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
 
-<!--        <activity-->
-<!--            android:name="com.seekting.demo_lib.MainActivity"-->
-<!--            tools:node="replace" />-->
+        <!--        <activity-->
+        <!--            android:name="com.seekting.demo_lib.MainActivity"-->
+        <!--            tools:node="replace" />-->
         <activity
             android:name=".TestActivity"
             android:label="测试" />
@@ -84,6 +84,9 @@
         <activity
             android:name=".activity.FloatingActivity"
             android:label="悬浮窗" />
+        <activity
+            android:name=".activity.CeilingActivity"
+            android:label="列表吸顶" />
 
         <service android:name=".service.FloatingService" />
     </application>

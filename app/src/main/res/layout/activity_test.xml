@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c7edcc"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:clipChildren="false">
 
-    <FrameLayout
-        android:id="@+id/imag"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shadow2">
-        <com.mainli.view.round.RoundImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/timg"/>
-    </FrameLayout>
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:padding="20dp">
 
+        <!-- 主要内容区域 -->
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="Hello World!"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+        <!--        &lt;!&ndash; 约束边界：距离右上角 16dp &ndash;&gt;-->
+        <!--        <androidx.constraintlayout.widget.Guideline-->
+        <!--            android:id="@+id/guideline"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintGuide_percent="1.0"-->
+        <!--            app:layout_constraintStart_toStartOf="parent" />-->
 
+        <!-- 角标：与约束边界进行约束 -->
+        <TextView
+            android:id="@+id/tv_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-20dp"
+            android:background="#ff0000"
+            android:padding="4dp"
+            android:text="99+"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/tv_content"
+            app:layout_constraintTop_toTopOf="@id/tv_content" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
