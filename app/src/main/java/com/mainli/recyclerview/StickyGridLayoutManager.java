@@ -148,7 +148,7 @@ public class StickyGridLayoutManager extends GridLayoutManager {
         //先看看第一个View是不是可以吸顶，如果不可以，则从缓存中查询
         View view = getChildAt(0);
         int itemViewType = getItemViewType(view);
-        int adapterPosition = ((RecyclerView.LayoutParams) view.getLayoutParams()).getViewAdapterPosition();
+        int adapterPosition = ((RecyclerView.LayoutParams) view.getLayoutParams()).getAbsoluteAdapterPosition();
         View groupView = null;
         if (!isStickyItemType(itemViewType)) {
             //一般来说下，吸顶View的itemType在前面查询，如果要改成吸底的则在后面查询，因此这里逆序
