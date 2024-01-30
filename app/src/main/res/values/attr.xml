@@ -14,4 +14,21 @@
         <attr name="textPadding" format="dimension" />
         <attr name="halfGap" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="PasswordView">
+        <attr name="passwordLength" format="integer" />
+        <attr name="passwordPadding" format="dimension" />
+        <attr name="borderColorValue" format="color" />
+        <attr name="borderColorHighLightValue" format="color" />
+        <attr name="borderWidthValue" format="dimension" />
+        <attr name="cursorFlashTime" format="integer" />
+        <attr name="isCursorEnable" format="boolean" />
+        <attr name="cipherEnable" format="boolean" />
+        <attr name="cursorColor" format="color" />
+        <attr name="childmode_mode" format="enum">
+            <enum name="underline" value="0" />
+            <enum name="rect" value="1" />
+        </attr>
+    </declare-styleable>
+
 </resources>

@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:showDividers="middle">
+
+    <com.mainli.view.EditableTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:background="#c7edcc"
+        android:padding="10dp"
+        android:textSize="30dp" />
+
+
+    <com.mainli.view.PasswordView
+        android:id="@+id/password_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        app:passwordLength="6" />
+
 
     <com.mainli.view.NumberCaptchaInputView
         android:id="@+id/number_captcha"
@@ -14,8 +32,7 @@
         android:padding="10dp"
         android:textSize="30dp"
         app:captchaSize="4"
-        app:gapWidth="16dp"
-        />
+        app:gapWidth="16dp" />
 
     <com.mainli.view.NumberCaptchaInputView
         android:id="@+id/number_captcha2"
@@ -26,8 +43,7 @@
         android:padding="2dp"
         android:textSize="30dp"
         app:captchaSize="6"
-        app:gapWidth="16dp"
-        />
+        app:gapWidth="16dp" />
 
     <com.mainli.view.NumberCaptchaInputView
         android:layout_width="match_parent"
@@ -36,8 +52,7 @@
         android:background="#c7edcc"
         android:padding="5dp"
         android:textSize="15dp"
-        app:captchaSize="16"
-        />
+        app:captchaSize="16" />
     <!--只有宽度为wrap_content屏幕大小足够时生效app:gapWidth="16dp"-->
     <com.mainli.view.NumberCaptchaInputView
         android:layout_width="match_parent"
@@ -47,8 +62,7 @@
         android:padding="10dp"
         android:textSize="30dp"
         app:captchaSize="6"
-        app:gapWidth="16dp"
-        />
+        app:gapWidth="16dp" />
     <!--加上padding 否则绘制矩形边框边界显示不全-->
     <com.mainli.view.NumberCaptchaInputView
         android:layout_width="wrap_content"
@@ -59,7 +73,6 @@
         android:textSize="30sp"
         app:captchaSize="6"
         app:cursorLineSize="5dp"
-        app:gapWidth="16dp"
-        />
+        app:gapWidth="16dp" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

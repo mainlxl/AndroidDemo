@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import com.mainli.R
 import com.mainli.view.NumberCaptchaInputView
+import com.mainli.view.PasswordView
 import com.seekting.demo_lib.Demo
 
 /**
@@ -18,6 +19,22 @@ class NumberCaptchaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_number_captcha)
+
+        findViewById<PasswordView>(R.id.password_view)?.setPasswordListener(object :
+            PasswordView.PasswordListener {
+            override fun passwordChange(changeText: String?) {
+                Log.i("Mainli", "passwordChange: $changeText")
+            }
+
+            override fun passwordComplete(password: String?) {
+                Log.i("Mainli", "passwordComplete: $password")
+            }
+
+            override fun keyEnterPress(password: String?, isComplete: Boolean) {
+                Log.i("Mainli", "keyEnterPress: $password , isComplete: $isComplete")
+            }
+        })
+
         view = findViewById<NumberCaptchaInputView>(R.id.number_captcha)
         view.setListener(object : NumberCaptchaInputView.OnCaptchaListener {
             override fun onCaptchaTextSize(captcha: CharSequence, size: Int) {
@@ -60,28 +77,77 @@ private class MyCaptchaDraw(private val density: Float) : NumberCaptchaInputView
         cornersSize = dp2
     }
 
-    override fun onItemDraw(canvas: Canvas, position: Int, text: CharSequence, numberPaint: Paint, cursorPaint: Paint) {
+    override fun onItemDraw(
+        canvas: Canvas,
+        position: Int,
+        text: CharSequence,
+        numberPaint: Paint,
+        cursorPaint: Paint
+    ) {
         val s = text.toString()
         var endIndex = text.length - 1;
         val start = ((numberOccupyWidth + gapWidth) * position + left).toInt()
         if (endIndex == -1 && position == 0) {
             cursorPaint.setColor(CURRENT_CURSOR_COLOR)
-            canvas.drawLine(start.toFloat(), bottom, (start + numberOccupyWidth).toFloat(), bottom, cursorPaint)
+            canvas.drawLine(
+                start.toFloat(),
+                bottom,
+                (start + numberOccupyWidth).toFloat(),
+                bottom,
+                cursorPaint
+            )
         } else if (position == endIndex) {
             cursorPaint.setColor(CURRENT_CURSOR_COLOR)
-            canvas.drawText(s.get(position).toString(), (start + start + numberOccupyWidth shr 1).toFloat(), bottom * 0.5f - textFixHeight, numberPaint)
-            canvas.drawLine(start.toFloat(), bottom, (start + numberOccupyWidth).toFloat(), bottom, cursorPaint)
+            canvas.drawText(
+                s.get(position).toString(),
+                (start + start + numberOccupyWidth shr 1).toFloat(),
+                bottom * 0.5f - textFixHeight,
+                numberPaint
+            )
+            canvas.drawLine(
+                start.toFloat(),
+                bottom,
+                (start + numberOccupyWidth).toFloat(),
+                bottom,
+                cursorPaint
+            )
         } else if (position < endIndex) {
             cursorPaint.setColor(DEFAULT_CURSOR_COLOR)
-            canvas.drawText(s.get(position).toString(), (start + start + numberOccupyWidth shr 1).toFloat(), bottom * 0.5f - textFixHeight, numberPaint)
-            canvas.drawLine(start.toFloat(), bottom, (start + numberOccupyWidth).toFloat(), bottom, cursorPaint)
+            canvas.drawText(
+                s.get(position).toString(),
+                (start + start + numberOccupyWidth shr 1).toFloat(),
+                bottom * 0.5f - textFixHeight,
+                numberPaint
+            )
+            canvas.drawLine(
+                start.toFloat(),
+                bottom,
+                (start + numberOccupyWidth).toFloat(),
+                bottom,
+                cursorPaint
+            )
         } else {
             cursorPaint.setColor(DEFAULT_CURSOR_COLOR)
-            canvas.drawLine(start.toFloat(), bottom, (start + numberOccupyWidth).toFloat(), bottom, cursorPaint)
+            canvas.drawLine(
+                start.toFloat(),
+                bottom,
+                (start + numberOccupyWidth).toFloat(),
+                bottom,
+                cursorPaint
+            )
         }
     }
 
-    override fun onDrawMeasure(numberOccupyWidth: Int, numberOccupyHeight: Int, gapWitch: Float, left: Int, top: Int, right: Int, bottom: Int, textFixHeight: Float) {
+    override fun onDrawMeasure(
+        numberOccupyWidth: Int,
+        numberOccupyHeight: Int,
+        gapWitch: Float,
+        left: Int,
+        top: Int,
+        right: Int,
+        bottom: Int,
+        textFixHeight: Float
+    ) {
         this.numberOccupyWidth = numberOccupyWidth
         this.gapWidth = gapWitch
         this.left = left
