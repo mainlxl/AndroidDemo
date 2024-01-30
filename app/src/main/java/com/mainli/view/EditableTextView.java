@@ -29,6 +29,7 @@ import androidx.annotation.Nullable;
 
 /**
  * 来源 https://juejin.cn/user/923245500710296/posts
+ * https://juejin.cn/post/7313242064196452361
  */
 @SuppressLint("AppCompatCustomView")
 public class EditableTextView extends TextView {
