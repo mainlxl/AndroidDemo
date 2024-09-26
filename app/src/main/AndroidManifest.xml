@@ -34,6 +34,12 @@
             android:name=".TestActivity"
             android:label="测试" />
         <activity
+            android:name=".activity.ShadowActivity"
+            android:label="View阴影绘制" />
+        <activity
+            android:name=".activity.WebpActivity"
+            android:label="webp动图" />
+        <activity
             android:name=".activity.DiceActivity"
             android:label="骰子DrawableDice" />
         <activity

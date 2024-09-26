@@ -1,5 +1,6 @@
 package com.mainli;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -42,6 +43,9 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Uri query = new Uri.Builder().scheme("dueros").authority("").encodedPath("server.dueros.ai/query")
+                .appendQueryParameter("q", "111").build();
+        android.util.Log.d("Mainli", "onCreate(query = [" + query + "])");
 //        final CountDownTextView view = new CountDownTextView(this);
 //        view.setText("10:11:12");
 //        view.setTextColor(Color.WHITE);
@@ -78,6 +82,16 @@ public class TestActivity extends AppCompatActivity {
 //        testNetwork();
 //        testGoogleProtocolBuffer(view);
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("Mainli", "onStop(1)");
+        if (isFinishing()) {
+            Log.d("Mainli", "onStop(2)");
+        }
+    }
+
 
     private void testGoogleProtocolBuffer(TextView view) {
         LoginInfo.Login loginInfo = LoginInfo.Login.newBuilder().setAccount("12345678911--").setPassword("789890").build();
